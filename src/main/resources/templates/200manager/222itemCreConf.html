@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      th:replace="~{commons/layout :: layout(~{::body})}">
+<head>
+</head>
+<body>
+<div class="box" id="content">
+<h3>商品登録確認</h3>
+ 	<span th:text="${errormessage}" th:class="error"></span>
+ 	<form th:action="@{/Mgr/itemRegExe}" th:object="${mtItem}" method="post">
+		<input type="hidden" name="itemCode" th:field="*{itemCode}"/>
+		<input type="hidden" name="itemName" th:field="*{itemName}"/>
+		<input type="hidden" name="itemGenreCode" th:field="*{mtItemGenre.itemGenreCode}"/>
+		<input type="hidden" name="spec" th:field="*{spec}"/>
+		<input type="hidden" name="price" th:field="*{price}"/>
+	 	<table>
+	 		<tr>
+	 			<th>商品コード</th>
+	 			<td class="left" th:text="*{itemCode}">
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<th>商品名</th>
+	 			<td class="left" th:text="*{itemName}"/>
+	 		</tr>
+	 		<tr>
+	 			<th>商品区分</th>
+	 			<td class="left" th:text="*{mtItemGenre.itemGenreName}"/>
+	 		</tr>
+	 		<tr>
+	 			<th>仕様</th>
+	 			<td class="left" th:text="*{spec}"/>
+	 		</tr>
+	 		<tr>
+	 			<th>単価</th>
+	 			<td class="left" th:text="*{#numbers.formatInteger(price, 1, 'COMMA')}"/>
+	 		</tr>
+	 	</table>
+	 	<button type="submit" class="menuBtn">登録</button>
+ 	</form>
+</div>
+</body>
+</html>

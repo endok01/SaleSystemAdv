@@ -1,0 +1,163 @@
+@charset "UTF-8";
+#header {
+}
+#menu {
+    width: 150px;				/* 横幅150px */
+    float: left;				/* 左に寄せる */
+}
+#content {
+    margin-left:150px;			/* 左端から150px離す */
+}
+#footer {
+    clear: both;				/* floatを解除 */
+}
+html {
+    font-size:16px
+}
+
+body {
+    font-family: 'メイリオ','Hiragino Kaku Gothic Pro',sans-serif;
+    background-color:white;
+}
+
+.box{
+    wide:50%;
+    text-align:center;
+}    
+
+h1 {
+    font-size: 1.2em;				/* 文字サイズ */
+    border-bottom: solid 1px #999;	/* ボーダーライン（下） */
+    text-align: center;				/* 中央揃え */
+
+}
+ul {
+    margin-top: 0px;				/* 上端のマージンを0に */
+    background-color: #eee;			/* 背景色（グレー） */
+    font-size: 0.9em;				/* 文字サイズ（中）*/
+}
+address{
+    font-style: normal;				/* 斜体字にしない */
+    font-size: 0.7em;				/* 文字サイズ（小） */
+    text-align: center;				/* 中央揃え */
+    border-top: solid 1px #999;		/* ボーダーライン（上） */
+}
+
+.error{
+    font-size: 0.9em;	/* エラーメッセージ用 */	
+    font-weight: bold;
+    color: #f00;	
+}
+/* *****************************
+   loginのためのCSS
+*********************************/
+table {							/* テーブル自体の中央寄せ */
+	margin-left: auto;
+	margin-right: auto;
+}
+.loginFrame{
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+.lc1{
+    font-size: 1.2em;
+    width: 100px;
+    text-align: center;
+    padding-right: 5px;
+}
+.loginBtn{
+    margin-top: 10px;
+    width:130px;
+    height:35px;
+    font-size: 1.1em;
+}
+.lrow{
+    height:40px;
+}
+.loginInput {
+    font-family: メイリオ,Osaka;
+    font-size: 1.1em;
+    border:none;
+    padding: 3px 5px;
+    background-color:  #d6eaff;
+}
+.loginHeader{
+    font-size: 1.5em;
+    padding-bottom: 5px;
+}
+
+/* *****************************
+   メニューのためのCSS
+*********************************/
+.menuBtn{
+	padding-left: 0px;
+	padding-right: 0px;
+    margin-top: 10px;
+    margin-left:0px;
+    margin-right:0px;
+    width:150px;
+    height:35px;
+    font-size: 0.9em;
+}
+
+/* *****************************
+   表のためのCSS
+*********************************/
+.hd1 {/* 表全体のヘッダー */
+    font-size: 1.2em;			/* 大きめの文字 */
+    text-align: left;			/* 左寄せ */
+}
+.hd2 {/* ヘッダー行 */
+    font-weight: normal;		/* 太字にしない */
+    text-align: center;			/* 中央揃え */
+    background-color: #d0d0d0;	/* グレーの背景色 */
+}
+.row {/* ヘッダー以外の行 */
+    background-color: #dbe9f9;	/* 薄い青の背景色 */
+}
+.c0	{/* 0列目 */
+    text-align: right;			/* 右揃え */
+}
+.c1	{/* １列目 */
+    width: 80px;				/* 横幅を80pxに */
+    text-align: center;			/* 中央揃え */
+}
+.c2	{/* ２列目 */
+    width: 100px;				/* 横幅を100pxに */
+    text-align: left;			/* 左揃え */
+}
+.c3	{/* ３列目 */
+    text-align: left;			/* 左揃え */
+}
+.c4	{/* ４列目 */
+    text-align: center;			/* 左揃え */
+}
+.c5	{/* ５列目 */
+    width: 50px;				/* 横幅を50pxに */
+    text-align: center;			/* 左揃え */
+}
+.c6	{/* ６列目 */
+    width: 100px;				/* 横幅を90pxに */
+    text-align: center;			/* 左揃え */
+}
+.c7	{/* ７列目 */
+    width: 100px;				/* 横幅を90pxに */
+    text-align: center;			/* 左揃え */
+}
+.left	{/* 左揃え */
+    text-align: left;			/* 左揃え */
+}
+/* *****************************
+ 横に並べる
+*********************************/
+.flex{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+}
+.flex div{
+    margin: 5px;
+    padding: 5px;
+}

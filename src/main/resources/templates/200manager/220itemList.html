@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      th:replace="~{commons/layout :: layout(~{::body})}">
+<head>
+</head>
+<body>
+<div class="box" id="content">
+<h3>商品一覧</h3>
+ 	<span th:text="${errormessage}" th:class="error"></span>
+ 	<form th:action="@{/Mgr/itemCre}" method="post">
+ 		<button type="submit">商品新規登録</button>
+ 	</form>
+ 	<table>
+ 		<tr class="hd2">
+ 			<th>No.</th>
+ 			<th>商品コード</th>
+ 			<th>商品名</th>
+ 			<th>商品区分</th>
+ 			<th>仕様</th>
+ 			<th>単価</th>
+ 			<th>変更</th>
+ 		</tr>
+ 		<tr th:each="item,itemCnt:${itemList}" class="row">
+ 			<td th:text="${itemCnt.count}" class="c0"/>
+ 			<td th:text="${item.itemCode}" class="c4"/>
+  			<td th:text="${item.itemName}" class="c3"/>
+  			<td th:text="${item.mtItemGenre.itemGenreName}" class="c3"/>
+  			<td th:text="${item.spec}" class="c3"/>
+  			<td th:text="${#numbers.formatInteger(item.price, 1, 'COMMA')}" class="c0"/>
+  			<td>
+  				<form th:action="@{'/Mgr/itemUpd/'+${item.itemCode}}" method="post">
+  					<button type="submit">変更</button>
+  				</form>
+  			</td>
+ 		</tr>
+ 	</table>
+</div>
+</body>
+</html>

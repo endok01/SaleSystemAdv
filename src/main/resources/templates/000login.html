@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>売上管理システム</title>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+	<div th:include="commons/header :: frag_header"></div>
+	<div class="box">
+	<h2>ログイン認証</h2>
+	<form th:action="@{/login}" method="post">
+		<div th:if="${iserror}" th:class="error">ログインできませんでした。やり直してください。</div>
+		<table>
+			<tr>
+				<th>ユーザID</th>
+				<td><input type="text" id="username" name="username" autofocus="autofocus" class="loginInput"/></td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td><input type="password" id="password" name="password" class="loginInput"/></td>
+			</tr>
+		</table>
+		<br/>
+		<button type="submit" class="loginBtn">ログイン</button>
+	</form>
+</div>
+<div th:include="commons/footer :: frag_footer"></div>
+</body>
+</html>

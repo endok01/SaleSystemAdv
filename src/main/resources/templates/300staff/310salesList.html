@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      th:replace="~{commons/layout :: layout(~{::body})}">
+<head>
+</head>
+<body>
+<div class="box" id="content">
+<h3>売上一覧</h3>
+ 	<form th:action="@{/Staff/salesCre}" method="post">
+ 		<button type="submit" >売上新規登録</button>
+ 	</form>
+	<div class="flex">
+		<div>
+ 			<form th:action="@{/Staff/salesSummaryByItem}" method="post">
+ 				<button type="submit">商品別売上</button>
+ 			</form>
+		</div>
+		<div>
+ 			<form th:action="@{/Staff/salesSummaryByCustomer}" method="post">
+ 				<button type="submit">顧客別売上</button>
+	 		</form>
+		</div>
+		<div>
+		 	<form th:action="@{/Staff/salesSummaryByDate}" method="post">
+ 				<button type="submit">日付別売上</button>
+	 		</form>
+		</div>
+ 	</div>
+ 	<table>
+ 		<tr class="hd2">
+ 			<th>No.</th>
+ 			<th>売上日</th>
+ 			<th>顧客</th>
+ 			<th>売上明細確認</th>
+ 		</tr>
+ 		<tr th:each="sale, cnt : ${salesList}" class="row">
+ 			<td th:text="${cnt.count}" class="c0"/>
+  			<td th:text="${sale.saleDate}" class="c3"/>
+  			<td th:text="${sale.mtCustomer.customerName}" class="c3"/>
+  			<td>
+  				<form th:action="@{'/Staff/salesDetailList/'+${sale.salesId}}" method="post">
+  					<button type="submit">明細確認</button>
+  				</form>
+  			</td>
+ 		</tr>
+ 	</table>
+</div>
+</body>
+</html>

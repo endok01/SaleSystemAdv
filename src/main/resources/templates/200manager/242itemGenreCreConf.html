@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      th:replace="~{commons/layout :: layout(~{::body})}">
+<head>
+</head>
+<body>
+<div class="box" id="content">
+<h3>商品区分新規登録確認</h3>
+ 	<span th:text="${errormessage}" th:class="error"></span>
+ 	<form th:action="@{/Mgr/itemGenreRegExe}" th:object="${mtItemGenre}" method="post">
+	 	<input type="hidden" name="itemGenreCode" th:field="*{itemGenreCode}" />
+ 		<input type="hidden" name="itemGenreName" th:field="*{itemGenreName}" />
+	 	<table>
+	 		<tr>
+	 			<th>商品区分コード</th>
+	 			<td class="left" th:text="*{itemGenreCode}"/>
+	 		</tr>
+	 		<tr>
+	 			<th>商品区分</th>
+	 			<td class="left" th:text="*{itemGenreName}"/>
+	 		</tr>
+	 		<tr>
+	 	</table>
+	 	<button type="submit" class="menuBtn">登録実行</button>
+ 	</form>
+</div>
+</body>
+</html>

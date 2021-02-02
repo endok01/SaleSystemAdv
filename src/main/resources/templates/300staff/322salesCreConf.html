@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      th:replace="~{commons/layout :: layout(~{::body})}">
+<head>
+</head>
+<body>
+<div class="box" id="content">
+<h3>売上登録確認</h3>
+ 	<span th:text="${errormessage}" th:class="error"></span>
+ 	<form th:action="@{/Staff/salesRegExe}" th:object="${trSalesOutline}" method="post">
+ 	 	<table>
+	 		<tr>
+	 			<th>顧客</th>
+	 			<td class="left" th:text="*{mtCustomer.customerName}"/>
+	 			<td>
+	 			<input type="hidden" th:field="*{mtCustomer.customerCode}" name="customerCode"/>
+	 			</td>
+	 		</tr>
+	 		<tr>
+	 			<th>売上日</th>
+	 			<td class="left" th:text="*{#dates.format(saleDate,'yyyy/MM/dd')}"/>
+	 			<td>
+					<input name="saleDate" type="hidden" th:value="*{#dates.format(saleDate,'yyyy/MM/dd')}"/>
+	 			</td>
+	 		</tr>
+	 		</table>
+	 		<table>
+	 		<tr class="hd2">
+	 			<th>商品</th>
+	 			<th>単価</th>
+	 			<th>数量</th>
+	 			<th>売上額</th>
+	 		</tr>
+	 		<tr th:each="s, status : *{trSalesDetails}" class="row">		
+	 			<td class="left" th:text="${s.mtItem.itemName}"/>
+	 			<td class="c0" th:text="${#numbers.formatInteger(s.salesPrice, 1, 'COMMA')}"/>
+	 			<td class="c0" th:text="${#numbers.formatInteger(s.quantity, 1, 'COMMA')}"/>
+	 			<td class="c0">
+	 				<span th:text="${#numbers.formatInteger(s.salesPrice * s.quantity, 1, 'COMMA')}"></span>
+	 				<input type="hidden" th:field="*{trSalesDetails[__${status.index}__].mtItem.itemCode}" name="itemCode" />
+	 				<input type="hidden" th:field="*{trSalesDetails[__${status.index}__].salesPrice}" name="salesPrice" />
+	 				<input type="hidden" th:field="*{trSalesDetails[__${status.index}__].quantity}" name="quantity" />
+	 			</td>
+	 		</tr>
+
+	 	</table>
+ 		<button type="submit" class="menuBtn">登録</button>
+ 	</form>
+</div>
+</body>
+</html>

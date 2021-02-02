@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      th:replace="~{commons/layout :: layout(~{::body})}">
+<head>
+</head>
+<body>
+<div class="box" id="content">
+<h3>商品変更</h3>
+ 	<span th:text="${errormessage}" th:class="error"></span>
+ 	<form th:action="@{/Mgr/itemUpdConf}" th:object="${mtItem}" method="post">
+		<input type="hidden" name="itemCode" th:field="*{itemCode}"/>
+	 	<table>
+	 		<tr>
+	 			<th>商品コード</th>
+	 			<td class="left" th:text="*{itemCode}" />
+	 		</tr>
+	 		<tr>
+	 			<th>商品名</th>
+	 			<td><input type="text" name="itemName" th:value="*{itemName}" placeholder="1～20文字" autofocus="autofocus" /></td>
+				<td><span th:errors="*{itemName}" th:class="error"></span></td>
+	 		</tr>
+	 		<tr>
+	 			<th>商品区分</th>
+	 			<td>
+	 				<select th:field="*{mtItemGenre.itemGenreCode}">
+	 					<option th:each="ig : ${itemGenreList}" th:value="${ig.itemGenreCode}" th:text="${ig.itemGenreName}" th:selected="${ig.itemGenreCode}==*{mtItemGenre.itemGenreCode}"></option>
+	 				</select>
+	 			</td>
+				<td><span th:errors="*{mtItemGenre}" th:class="error"></span></td>
+	 		</tr>
+	 		<tr>
+	 			<th>仕様</th>
+	 			<td><input type="text" name="spec" th:value="*{spec}"/></td>
+				<td><span th:errors="*{spec}" th:class="error"></span></td>
+	 		</tr>
+	 		<tr>
+	 			<th>単価</th>
+	 			<td><input type="text" name="price" th:value="*{price}" placeholder="数値・必須入力"/></td>
+				<td><span th:errors="*{price}" th:class="error"></span></td>
+	 		</tr>
+	 	</table>
+	 	<button type="submit" class="menuBtn">変更確認</button>
+ 	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      th:replace="~{commons/layout :: layout(~{::body})}">
+<head>
+</head>
+<body>
+<div class="box" id="content">
+<h3>日付別売上金額集計</h3>
+ 	<span th:text="${errormessage}" th:class="error"></span>
+ 	 	<table>
+ 		<tr class="hd2">
+ 			<th>No.</th>
+ 			<th>日付</th>
+ 			<th>売上合計額</th>
+ 		</tr>
+ 		<tr th:each="sale,cnt:${salesList}" class="row">
+ 			<td th:text="${cnt.count}" class="c0"/>
+ 			<td th:text="${sale.date}" class="c4"/>
+  			<td th:text="${#numbers.formatInteger(sale.total, 1, 'COMMA')}" class="c0"/>
+ 		</tr>
+ 	</table>
+</div>
+</body>
+</html>

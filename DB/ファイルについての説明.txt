@@ -1,0 +1,15 @@
+・00_SaleSystemSample.erd
+　ER図
+・01_create_user.sql
+　ユーザ作成用SQL
+・02_SaleSystemSample_All.ddl
+　全テーブル作成用DDL
+・02_SaleSystemSample_SaleOnly.ddl
+　MT_USERおよびMT_ROLE以外のテーブルを作成するDDL
+・03_insert_Roll.sql
+　MT_ROLEにユーザをINSERTするSQL
+　Security実装前にデータ確認するため、MT_USERも一部挿入する
+・04_insert_sale_MT.sql
+　マスタ系データ挿入用
+・05_insert_sale_TR.sql
+　トランザクション系データ挿入用

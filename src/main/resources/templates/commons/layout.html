@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+     th:fragment="layout(body)">
+<head>
+  <title>売上管理システム</title>
+  <meta charset="UTF-8">
+  <link th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+  <div th:replace="commons/header :: frag_header"></div>
+  <div th:replace="commons/menu :: frag_menu"></div>
+  <div th:replace="${body}"></div>
+  <div th:replace="commons/footer :: frag_footer"></div>
+</body>
+</html>

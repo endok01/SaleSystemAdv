@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+</head>
+<body>
+	<div class="box" th:fragment="frag_menu" id="menu">
+		<span th:text="${loginUser.userName}+さん">ログインユーザ名</span>
+
+		<!--/* マネージャメニュー  */-->
+		<form th:action="@{/Mgr/SalesList}" method="get" sec:authorize="hasRole('MANAGER')">
+			<button type="submit" class="menuBtn">売上一覧</button>
+		</form>
+		<form th:action="@{/Mgr/CustomerList}" method="get" sec:authorize="hasRole('MANAGER')">
+			<button type="submit" class="menuBtn">顧客一覧</button>
+		</form>
+		<form th:action="@{/Mgr/ItemList}" method="get" sec:authorize="hasRole('MANAGER')">
+			<button type="submit" class="menuBtn">商品一覧</button>
+		</form>
+		<form th:action="@{/Mgr/ItemGenreList}" method="get" sec:authorize="hasRole('MANAGER')">
+			<button type="submit" class="menuBtn">商品区分一覧</button>
+		</form>
+		
+		<!--/* ユーザメニュー  */-->
+		<form th:action="@{/Staff/SalesList}" method="get" sec:authorize="hasRole('USER')">
+			<button type="submit" class="menuBtn">売上一覧</button>
+		</form>
+
+		<!--/* 共通メニュー  */-->
+		<form th:action="@{/logout}" method="post">
+			<button type="submit" class="menuBtn">ログアウト</button>
+		</form>
+	</div>
+</body>
+</html>

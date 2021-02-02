@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+     th:replace="~{commons/layout :: layout(~{::body})}">
+<head>
+</head>
+<body>
+<div class="box" id="content">
+<h3>顧客変更確認</h3>
+ 	<span th:text="${errormessage}" th:class="error"></span>
+ 	<form th:action="@{/Mgr/customerRegExe}" th:object="${mtCustomer}" method="post">
+ 		<input type="hidden" name="customerCode" th:value="*{customerCode}">
+ 		<input type="hidden" name="customerName" th:value="*{customerName}">
+	 	<table>
+	 		<tr>
+	 			<th>顧客コード</th>
+				<td class="left" th:text="*{customerCode}"/>
+	 		</tr>
+	 		<tr>
+	 			<th>顧客名</th>
+	 			<td class="left" th:text="*{customerName}"/>
+	 		</tr>
+	 	</table>
+	 	<button type="submit" class="menuBtn">変更実行</button>
+ 	</form>
+</div>
+</body>
+</html>
